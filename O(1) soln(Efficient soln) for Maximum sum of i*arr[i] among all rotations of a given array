@@ -1,0 +1,40 @@
+//Time _Complexity:O(n)
+#include <stdio.h>
+
+int Max(int a[],int n)
+{
+    int pivot=findpivot(a,n);
+    int s=0,d;
+    
+    d=n-1-pivot;
+    printf("\n%d\t%d\n",d,pivot);
+    for(int i=0;i<n;i++)
+    {
+        s+=((i+d)%n)*a[i];
+    }
+    return s;
+}
+
+int findpivot(int a[],int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        if(a[i]>(a[i+1]%n))
+        break;
+    }
+    return i;
+}
+
+int main()
+{
+    int n,a[10],max;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    scanf("%d",&a[i]);
+    
+    max=Max(a,n);
+    printf("Maximum value is %d",max);
+
+    return 0;
+}
