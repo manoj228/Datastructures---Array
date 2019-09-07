@@ -1,0 +1,54 @@
+//Brute force approach
+
+#include <stdio.h>
+
+int b[10];
+static int c=0;
+void rotateL(int *a,int n,int k)
+{
+    int c=0,i,l,r;
+    for(i=k;i<k+n;i++)
+    b[c++]=a[i%n];
+    
+}
+
+
+void sum(int a[],int n,int l,int r)
+{
+    int sl=0,sr=0,j;
+    for(int i=0,j=r;i<=l,j<=n;i++,j++)
+    {
+     c++; 
+    sr+=b[j];
+    sl+=b[i];
+    }
+    if(c%2==0)
+    printf("%d\n",sr);
+    else
+    printf("%d\n",sl);
+}
+int main()
+{
+    
+int a[]={1,2,3,4,5};
+int n=sizeof(a)/sizeof(a[0]);
+int kl,k,kr,l,r;
+kl=3;
+kr=1;
+k=n-(kl+kr)+1;           // both left and right rotation
+rotateL(&a[0],n,k);
+l=2;
+r=n-l;
+sum(b,n,l,r);
+
+kl=2;
+kr=1;
+k=n-(kl+kr)+1;
+rotateL(&a[0],n,k);
+l=4;
+r=n-l;
+sum(b,n,l,r);
+
+
+    return 0;
+}
