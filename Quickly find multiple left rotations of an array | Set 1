@@ -1,4 +1,5 @@
-//Space optimized approach
+//Space optimized approach Space complexity: O(n)
+
 #include <stdio.h>
 
 void leftrotate(int a[],int n,int k)
