@@ -1,0 +1,32 @@
+//Efficient solution
+#include <stdio.h>
+
+void findelement(int a[],int no_of_rotations,int range[][2],int index)
+{
+    for(int i=no_of_rotations-1;i>=0;i--)
+    {
+        int l=range[i][0];
+        int r=range[i][1];
+        
+        if(l<=index && index>=r)
+        {
+            if(index==l)
+            index=r;
+            else
+            index--;
+        }
+    }
+  printf("%d",a[index]);
+}
+
+int main()
+{
+    int n,no_of_rotations,index;
+    int a[]={1,2,3,4,5};
+    int range[][2]={{0,3},{0,2}};
+    no_of_rotations=2;
+    index=1;
+    findelement(a,no_of_rotations,range,index);
+    
+    return 0;
+}
