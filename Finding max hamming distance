@@ -1,0 +1,40 @@
+// Time complexity: O(n*n)
+/*Hamming distance of 2 strings of not equal value 
+eg: 10101 , 00110  hamming distance is 3 (1-0,0-1,1-0)*/
+#include <stdio.h>
+
+int  maxHamdistance(int a[],int n)
+{
+    int cham,mham=0,b[20];
+int j,k;
+    for(int i=0;i<n;i++)
+    b[i]=a[i];
+    for(int i=0;i<n;i++)
+    b[i+n]=a[i];
+    
+    for(int i=1;i<n;i++)
+    {
+        cham=0;
+        for(j=i,k=0;j<(i+n);j++,k++)
+            if(b[j]!=a[k])
+            cham++;
+            
+            if(cham==n)
+            return n;
+            
+            if(cham>mham)
+            mham=cham;
+        
+    }
+    return mham;
+   
+}
+int main()
+{
+    int a[]={1,4,1};
+    int n=sizeof(a)/sizeof(a[0]);
+    int max;
+max=maxHamdistance(a,n);
+    printf("Maximum Hamming distance is %d",max);
+    return 0;
+}
