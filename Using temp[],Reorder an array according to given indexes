@@ -1,0 +1,35 @@
+//Time complexity: O(n)
+#include <stdio.h>
+
+//Using temp array
+int cmp(const void *a,const void *b)
+{
+    return (*(int*)a-*(int*)b);
+}
+
+void arrange(int a[],int index[],int n)
+{
+    int temp[n];
+    for(int i=0;i<n;i++)
+    {
+        temp[i]=a[index[i]];
+    }
+    for(int i=0;i<n;i++)
+    printf("%d\t",temp[i]);
+    printf("\n");
+    qsort(index,n,sizeof(int),cmp);
+    for(int i=0;i<n;i++)
+    printf("%d\t",index[i]);
+   
+}
+
+
+int main()
+{
+    int a[]={10,11,12};
+    int index[]={1,0,2};
+    int n=sizeof(a)/sizeof(a[0]);
+    arrange(a,index,n);
+    return 0;
+    
+}
