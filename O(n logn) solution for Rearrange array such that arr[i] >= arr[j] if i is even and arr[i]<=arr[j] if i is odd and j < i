@@ -1,0 +1,40 @@
+// Time complexity : O(n logn)
+#include <stdio.h>
+
+int cmp(const void *a,const void *b)
+{
+    return (*(int*)a-*(int*)b);
+}
+main ()
+{
+  int n, mid,k,l;
+  int a[10],b[10];
+  scanf ("%d", &n);
+  for (int i = 0; i < n; i++)
+   { scanf ("%d", &a[i]);
+   
+}
+
+qsort(a,n,sizeof(int),cmp);
+
+  printf("\n");
+  if (n % 2 != 0)
+    mid = n / 2;
+   else
+    mid = (n / 2)-1;
+
+k=mid;
+l=mid+1;
+
+for(int i=0;i<n;i++)
+{
+    if(i%2==0)
+    b[i]=a[k--];
+    else
+    b[i]=a[l++];
+}
+  for(int i=0;i<n;i++)
+  printf("%d\t",b[i]);
+
+  return 0;
+}
