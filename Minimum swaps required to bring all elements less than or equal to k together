@@ -1,0 +1,39 @@
+//Time complexity : O(n)
+#include <stdio.h>
+
+void minswp(int a[],int n,int k)
+{
+    int c=0,bd=0,ans,j;
+    for(int i=0;i<n;i++)      // elements in array less than k
+    if(a[i]<=k)
+    c++;
+
+   for(int i=0;i<c;i++)      // unwanted elements 
+   if(a[i]>k)
+   bd++;
+   
+   printf("%d %d\n",c,bd);
+   ans=bd;
+   for(int i=0,j=c;j<n;i++,j++)
+   {
+       if(a[i]>k)       // decrement the count of previous window
+       --bd;
+       
+       if(a[j]<k)       // increment the count of previous window
+       bd++;
+       
+       if(ans>bd)
+       ans=bd;
+   }
+   printf("%d",ans);
+}
+int main()
+{
+    int k=3;
+    int a[]={2, 1, 5, 6, 3};
+    int n=sizeof(a)/sizeof(a[0]);
+    
+  minswp(a,n,k);
+\
+    return 0;
+}
