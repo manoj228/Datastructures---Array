@@ -1,0 +1,43 @@
+// Time complexity: O(n)
+
+//Without using temp array
+#include <stdio.h>
+
+void rearrange(int a[],int index[],int n)
+{
+    int ai,ae;
+    for(int i=0;i<n;i++)
+    {
+        while(index[i]!=i)
+        {
+            // copying values
+        ai=index[index[i]];
+        ae=a[index[i]];
+        
+        //placing its target position
+        a[index[i]]=a[i];
+        index[index[i]]=index[i];
+        
+        //replacing values which are not placed at target position
+        a[i]=ae;
+        index[i]=ai;
+        }
+    }
+    
+    for(int i=0;i<n;i++)
+    printf("%d\t",a[i]);
+    printf("\n");
+    
+    for(int i=0;i<n;i++)
+    printf("%d\t",index[i]);
+}
+
+int main()
+{
+    int a[]={50, 40, 70, 60, 90};
+    int index[] = {3,  0,  4,  1,  2};
+    int n=sizeof(a)/sizeof(a[0]);
+    
+    rearrange(a,index,n);
+    return 0;
+}
