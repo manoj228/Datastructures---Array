@@ -1,0 +1,38 @@
+//Time complexity :O(n logn)
+#include <stdio.h>
+
+int cmp(const void *a,const void *b)
+{
+    return (*(int*)a-*(int*)b);
+}
+
+void swap(int *a,int *b)
+{
+    int t;
+    t=*a;
+    *a=*b;
+    *b=t;
+    
+    
+}
+
+void arrange(int a[],int n)
+{
+    for(int i=1;i<n-1;i++)
+    swap(&a[i],&a[n-i]);
+    
+    
+}
+int main()
+{
+    int a[]={6, 4, 2, 1, 8, 3};
+    int n=sizeof(a)/sizeof(a[0]);
+    
+    qsort(a,n,sizeof(int),cmp);
+    arrange(a,n);
+    
+    for(int i=0;i<n;i++)
+    printf("%d\t",a[i]);
+    
+    return 0;
+}
