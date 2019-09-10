@@ -1,0 +1,41 @@
+//Time complexity : O(n^2)
+
+#include <stdio.h>
+
+void subarray(int a[],int n)
+{
+    int s=0;
+    int maxsize=-1,startingindex;
+    
+    // pick a starting point i
+    for(int i=0;i<n;i++)
+    {
+        s=(a[i]==0)?-1:1;
+        
+        //consider all subarrays starting from i
+        for(int j=i+1;j<n;j++)
+        {
+            (a[j]==0) ? (s+=-1) : (s+=1);
+            
+            if(s==0 && maxsize<j-i+1)
+            {
+                maxsize=j-i+1;
+                startingindex=i;
+            }
+        }
+    }
+    if(maxsize==-1)
+    printf("no subarray");
+    else
+    printf("%d to %d",startingindex,maxsize+startingindex-1);
+}
+
+int main()
+{
+   int a[]={0, 0, 1, 1, 0};
+   int n=sizeof(a)/sizeof(a[0]);
+   
+   subarray(a,n);
+
+    return 0;
+}
