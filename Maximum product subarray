@@ -1,0 +1,40 @@
+//Time complexity : O(n)
+
+#include <stdio.h>
+
+int max(int a,int b)
+{
+    return (a>b)? a : b;
+}
+
+int min(int a,int b)
+{
+    return (a<b) ? a : b; 
+}
+
+void maxproduct(int a[],int n)
+{
+    int res=a[0];
+    int maxe=a[0];
+    int mine=a[0];
+    
+    for(int i=1;i<n;i++)
+    {
+      int temp = maxe;
+      maxe= max(max(a[i],maxe*a[i]),mine*a[i]);
+      mine = min(min(a[i],mine*a[i]),temp*a[i]);
+      
+      if(res<maxe)
+      res=maxe;
+    }
+    printf("%d",res);
+}
+int main()
+{
+    int a[]={6, -3, -10, 0, 2};
+    int n=sizeof(a)/sizeof(a[0]);
+    
+    maxproduct(a,n);
+
+    return 0;
+}
