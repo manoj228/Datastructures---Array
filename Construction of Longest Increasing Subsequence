@@ -1,0 +1,41 @@
+//Time complexity: O(n)
+#include <stdio.h>
+
+void constructionofLIS(int a[],int n)
+{
+     int temp[n],c=1;
+     int x=a[n-1],y=a[n-2],ans;
+     
+     if(x<y)
+     ans=y;
+     else
+     ans=x;
+     temp[0]=ans;
+     for(int i=n-3;i>=0;i--)
+     {
+         
+         if(ans>a[i])
+         {
+             temp[c++]=a[i];
+             ans=a[i];
+         }
+     }
+     
+     
+     for(int i=0;i<c;i++)
+     {
+         printf("%d\t",temp[i]);
+         
+     }
+     printf("\nLength of LIS is %d",c);
+}
+
+int main()
+{
+    int a[]={2, 5, 3, 7, 11, 8, 10, 13, 6};
+    int n=sizeof(a)/sizeof(a[0]);
+    constructionofLIS(a,n);
+
+    return 0;
+}
+
