@@ -1,0 +1,63 @@
+
+#include <stdio.h>
+int c=0;
+void swap(int *a,int *b)
+{
+    c++;
+    int t=*a;
+    *a=*b;
+    *b=t;
+}
+
+void search(int a[],int pair[],int na,int searchindex)
+{
+   
+    for(int i=searchindex+1;i<na;i++)
+    {
+        if(pair[searchindex]==a[i])
+        {
+        swap(&a[searchindex],&a[i]);
+       
+        }
+    }
+}    
+
+void minswap(int a[],int pair[],int index[],int na,int np)
+{
+    for(int i=0;i<na;i+=2)
+    {
+        if(pair[i+1]!=a[i+1])
+        {
+           search(a,pair,na,i+1);
+        }
+        else if(pair[i]!=a[i] )
+        {
+            search(a,pair,na,i);
+        }
+    }
+    printf("\n");
+     for(int i=0;i<na;i++)
+    printf("%d\t",a[i]);
+    
+    printf("\nCount : %d",c);
+}
+
+int main()
+{
+   	int a[]={3, 5, 4, 6, 1, 2};
+	int pair[]={3,1,6,2,5,4};
+    int na=sizeof(a)/sizeof(a[0]);
+    int np=sizeof(pair)/sizeof(pair[0]);
+    int index[na];
+    
+    for(int i=0;i<na;i++)
+    {
+        index[a[i]]=i;
+    }
+    // for(int i=1;i<na;i++)
+     //printf("%d\t",index[i]);
+    
+    minswap(a,pair,index,na,np);
+    
+    return 0;
+}
