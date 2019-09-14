@@ -1,0 +1,87 @@
+
+#include <stdio.h>
+
+int cmp(const void *a,const void *b)
+{
+    return(*(int*)a-*(int*)b);
+}
+
+int comp(const void *a,const void *b)
+{
+    return(*(int*)a-*(int*)b);
+}
+
+void sort(int a[],int n)
+{
+    int temp[n],count[n],sortcount[n],c=0,k=0,l=0,p,v,s;
+    int search=a[0];
+    temp[k++]=a[0];
+    c++;
+    for(int i=1;i<=n;i++)
+    {
+        if(search!=a[i])
+        {
+            temp[k++]=search=a[i];
+            count[l++]=c;
+            c=1;
+        }
+        else
+        {
+            c++;
+        }
+    }
+    
+    for(int i=0;i<k-1;i++)
+   printf("%d\t",temp[i]);
+    
+    printf("\n");
+    
+    for(int i=0;i<l;i++)
+    sortcount[i]=count[i];
+    
+    qsort(sortcount,l,sizeof(int),comp);
+    
+   for(int i=0;i<l;i++)
+   printf("%d\t",count[i]);         // 3 4 1 1 2
+    
+    printf("\n");
+    for(int i=0;i<l;i++)
+    printf("%d\t",sortcount[i]);  
+    
+     printf("\n");
+    // 1 1 2 3 4 
+    v=l;
+    p=sortcount[--v];
+
+
+   for(int i=0;i<n;i++)
+   {
+   
+       for(int j=0;j<l;j++)
+       {
+          
+           if(p==count[j]){
+           s=j;
+           }
+       }
+           
+       
+       
+  for(int t=0;t<count[s];t++)
+       {
+           printf("%d\t",temp[s]);
+       }
+       p=sortcount[--v];
+       
+  }
+}
+
+int main()
+{
+   int a[]={2, 3, 2, 4,5, 12, 2, 3, 3, 3, 12};
+   int n=sizeof(a)/sizeof(a[0]);
+   
+   qsort(a,n,sizeof(int),cmp);
+   sort(a,n);
+    return 0;
+}
