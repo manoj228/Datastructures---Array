@@ -1,0 +1,32 @@
+//Time complexity : O(nlogn)
+//Greedy Approach
+#include <stdio.h>
+
+int cmp(const void *a,const void *b)
+{
+    return (*(int*)a-*(int*)b);
+}
+
+void sumofcosecutivedifference(int a[],int n)
+{
+    int s=0;
+     
+     /*Subtracting a1, a2, a3,....., a(n/2)-1, an/2  twice
+    and adding a(n/2)+1, a(n/2)+2, a(n/2)+3,....., an - 1, an twice */
+     for(int i=0;i<n/2;i++)
+     {
+         s-=(2*a[i]);
+         s+=(2*a[n-1-i]);
+     }
+     printf("%d",s);
+}
+
+int main()
+{
+    int a[]={4, 10,6, 1, 8};
+    int n=sizeof(a)/sizeof(a[0]);
+    qsort(a,n,sizeof(int),cmp);
+    sumofcosecutivedifference(a,n);
+    
+    return 0;
+}
