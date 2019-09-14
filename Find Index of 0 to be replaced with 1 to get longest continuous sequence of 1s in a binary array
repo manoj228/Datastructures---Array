@@ -1,0 +1,41 @@
+//Time complexity O(n)
+#include <stdio.h>
+
+void findindex(int a[],int n)
+{
+    int max_count=0;      // max no of 1 around zero
+    int max_index;        // to store the result
+    int prev_zero=-1;
+    int prev_prev_zero=-1 ;  // index of both prev_zero and prev_prev_zero 
+    
+    
+    for(int current=0;current<n;current++)
+    {
+        if(a[current]==0)
+        {
+            if(current - prev_prev_zero > max_count)
+            {
+                max_count = current - prev_prev_zero;
+                max_index = prev_zero;
+            }
+            
+            //updating iteration
+            prev_prev_zero = prev_zero;
+            prev_zero = current;
+        }
+        
+        if(n - prev_prev_zero >max_count)
+        max_index = prev_zero;
+    }
+    printf("%d",max_index);
+}
+
+int main()
+{
+    int a[]={1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1};
+    int n=sizeof(a)/sizeof(a[0]);
+    
+    findindex(a,n);
+
+    return 0;
+}
