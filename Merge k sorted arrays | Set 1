@@ -1,0 +1,39 @@
+
+#include <stdio.h>
+
+int cmp(const void *a,const void *b)
+{
+    return (*(int*)a-*(int*)b);
+}
+void arrange(int a[][4],int r,int c)
+{
+    int n=r*c;
+    int b[r*c],s=0;
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            b[s++]=a[i][j];
+            
+        }
+    }
+    
+    qsort(b,n,sizeof(int),cmp);
+    
+    for(int i=0;i<n;i++)
+    printf("%d ",b[i]);
+}
+
+int main()
+{
+    int a[3][4] = { {1, 3, 5, 7},
+            {2, 4, 6, 8},
+            {0, 9, 10, 11}
+        } ;
+        
+    int r=3,n=4;
+    
+    arrange(a,r,n);
+
+    return 0;
+}
