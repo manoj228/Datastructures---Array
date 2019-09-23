@@ -1,0 +1,40 @@
+
+#include <stdio.h>
+
+void distinct(int a[],int n)
+{
+ int max=0,fc,s;
+ for(int i=0;i<n;i++)
+ {
+     s=0;
+     fc=a[i];
+     for(int j=i+1;j<n;j++)
+     {
+         if(fc==a[i])
+         {
+             s++;
+         }
+     }
+     if(max<s)
+     {
+         max=s;
+     }
+ }
+ 
+ if(max>(n+1)/2)
+ {
+     printf("NO");
+ }
+ else
+ {
+     printf("YES");
+ }
+}
+int main()
+{
+   int a[]={7,7,7,7};
+   int n=sizeof(a)/sizeof(a[0]);
+   
+   distinct(a,n);
+    return 0;
+}
