@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+void median(int a[],int n)
+{
+    int s=0,c=0;
+    
+    printf("%d\n",a[0]);
+    for(int i=1;i<n;i++)    {
+        if(i%2==0)
+        {
+            printf("%d\n",a[n/2]);
+        }
+        else
+        {
+            for(int j=0;j<=i;j++)
+            {
+                s+=a[j];
+                c++;
+            }
+            printf("%lf\n",s/(double)c);
+            s=0;
+            c=0;
+        }
+    }
+}
+
+int main()
+{
+    int a[]={5,15,10,20,3};
+    int n=sizeof(a)/sizeof(a[0]);
+    
+    median(a,n);
+    return 0;
+}
