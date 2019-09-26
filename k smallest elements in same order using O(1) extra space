@@ -1,0 +1,49 @@
+
+#include <stdio.h>
+
+void small(int a[],int n,int k)
+{
+    int max,pos;
+    for(int i=k;i<n;i++)
+    {
+        //find largest between k to n
+        
+        max=a[k-1];
+        pos=k-1;
+        for(int j=0;j<n;j++)
+        {
+            if(a[i]>max)
+            {
+                max=a[i];
+                pos=j;
+            }
+        }
+        
+        // if max value is larger than current element then shift one place left
+        if(max>a[i])
+        {
+            int j=pos;
+            while(j<k-1)
+            {
+                a[j]=a[j+1];
+                j++;
+            }
+            a[k-1]=a[i];
+        }
+    }
+    
+    for(int i=0;i<n;i++)
+    printf("%d ",a[i]);
+}
+
+
+int main()
+{
+    int a[]={4, 12, 16, 21, 25};
+    int k=3;
+    int n=sizeof(a)/sizeof(a[0]);
+    
+    small(a,n,k);
+
+    return 0;
+}
