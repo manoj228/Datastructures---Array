@@ -1,0 +1,41 @@
+//Time complexit : O(n)
+#include <stdio.h>
+#include <limits.h>
+
+void mindistance(int a[],int n,int x,int y)
+{
+    int i,mindis=INT_MAX,prev;
+    for(i=0;i<n;i++)
+    {
+        if(a[i]==x || a[i]==y)
+        {
+            prev=i;
+            break;
+        }
+    }
+  
+    for(;i<n;i++)
+    {
+        if(a[i]==x || a[i]==y)
+        {
+            if(a[prev]!=a[i] && mindis>(i-prev))
+            {
+                mindis=i-prev;
+                prev=i;
+            }
+            else
+            prev=i;
+        }
+    }
+    printf("%d",mindis);
+}
+
+int main()
+{
+    int a[]={3, 5, 4, 2, 6, 5, 6, 6, 5, 4, 8, 3};
+    int x=3,y=6;
+    int n=sizeof(a)/sizeof(a[0]);
+    
+    mindistance(a,n,x,y);
+    return 0;
+}
