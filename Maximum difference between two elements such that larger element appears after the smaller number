@@ -1,0 +1,27 @@
+//Time complexity : O(n)
+#include <stdio.h>
+
+void maxdifference(int a[],int n)
+{
+    int max_diff=a[1]-a[0];
+    int min=a[0];
+    
+    for(int i=1;i<n;i++)
+    {
+        if(a[i]-min>max_diff)
+        max_diff=a[i]-min;
+        
+        if(a[i]<min)
+        min=a[i];
+    }
+    printf("%d",max_diff);
+}
+
+int main()
+{
+    int a[]={2, 3, 10, 6, 4, 8, 1};
+     int n=sizeof(a)/sizeof(a[0]);
+     maxdifference(a,n);
+     
+     return 0;
+}
