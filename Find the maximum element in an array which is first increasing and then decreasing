@@ -1,0 +1,23 @@
+//Time complexity : O(n)
+#include <stdio.h>
+
+void maxelement(int a[],int n)
+{
+    int max;
+    max=a[0];
+    for(int i=1;i<n;i++)
+    {
+        if(max<a[i])
+        max=a[i];
+    }
+    printf("%d",max);
+}
+
+int main()
+{
+   int a[]={8, 10, 20, 80, 100, 200, 400, 500, 3, 2, 1};
+   int n=sizeof(a)/sizeof(a[0]);
+   
+   maxelement(a,n);
+    return 0;
+}
