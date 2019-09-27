@@ -1,0 +1,25 @@
+//Time complexity: O(nlogn)
+#include <stdio.h>
+
+int cmp(const void *a,const void *b)
+{
+    return (*(int*)b-*(int*)a);
+}
+
+void secLargest(int a[],int n)
+{
+    qsort(a,n,sizeof(int),cmp);
+    
+    printf("Second largest element in an array is %d",a[1]);
+    
+}
+
+int main()
+{
+    int a[]={12, 35, 1, 10, 34, 1};
+    int n=sizeof(a)/sizeof(a[0]);
+    
+    secLargest(a,n);
+
+    return 0;
+}
