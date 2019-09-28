@@ -1,0 +1,41 @@
+//Time complexity : O(n)
+#include <stdio.h>
+
+int max(int a,int b)
+{
+    return (a>b) ? a : b;
+}
+
+int min(int a,int b)
+{
+    return (a<b) ? a : b;
+}
+void largePair(int a[],int n)
+{
+    int first = max(a[0],a[1]);
+    int second = min(a[0],a[1]);
+    
+    for(int i=2;i<n;i++)
+    {
+        if(a[i]>first)
+        {
+            second=first;
+            first=a[i];
+        }
+        else
+        {
+            second=a[i];
+        }
+    }
+    printf("%d",(first+second));
+}
+
+int main()
+{
+   int a[]={12, 34, 10, 6, 40};
+   int n=sizeof(a)/sizeof(a[0]);
+   
+   largePair(a,n);
+
+    return 0;
+}
