@@ -1,0 +1,60 @@
+//Time compklexity : O(na+nb)
+#include <stdio.h>
+
+int max(int a,int b)
+{
+    return (a>b) ? a:b;
+}
+
+void maxSumpath(int a[],int na,int b[],int nb)
+{
+    int result=0,r,sum1=0,sum2=0,i=0,j=0;
+    
+    while(i<na && j<nb)
+    {
+        if(a[i]<b[j])
+        {
+            sum1+=a[i++];
+           
+        }
+        else if(b[j]<a[i])
+        {
+            sum2+=b[j++];
+        }
+        
+        else
+        {
+            //if we reach common point
+            result += max(sum1,sum2);
+            
+            sum1=0,sum2=0;
+            
+            while(i<na && j<nb && a[i]==b[j])
+            {
+                result+=a[i++];
+                j++;
+            }
+        }
+    }
+    
+    //add remaining elements
+    while(i<na)
+    sum1+=a[i++];
+    
+    while(j<nb)
+    sum2+=b[j++];
+    
+    result += max(sum1,sum2);
+
+    printf("%d ",result);
+}
+
+int main()
+{
+    int a[]={2, 3, 7, 10, 12}, b[]= {1, 5, 7, 8};
+    int na=sizeof(a)/sizeof(a[0]);
+    int nb=sizeof(b)/sizeof(b[0]);
+    
+    maxSumpath(a,na,b,nb);
+    return 0;
+}
