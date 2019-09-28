@@ -1,0 +1,58 @@
+//Time complexity : O(n)
+#include <stdio.h>
+
+void zeros(int a[],int n,int m)
+{
+    int l[n],r[n],p=0,q,c=0,cn=0,max,maxx;
+    for(int i=0;i<n;i++)
+    {c=0;cn=0;
+        if(a[i]==0)
+        {q=i;
+           while(a[p++]!=0)
+           {
+               ++c;
+           }
+           while(a[++q]!=0)
+           {
+               cn++;
+           }
+           l[i]=c;
+           r[i]=cn;
+           max=c;
+           maxx=cn;
+        }
+    }
+  for(int i=0;i<n;i++)
+  {
+      if(a[i]==0){
+          if(max<l[i])
+          max=i;
+          if(maxx<r[i]){
+          maxx=i;}
+          else{
+          maxx=i;
+          }
+      }
+  }
+  if(m==1)
+  {
+      printf("%d",maxx);
+  }
+  else if(m==2)
+  {
+      printf("%d %d ",max,maxx);
+  }
+  else
+  {
+      printf("%d %d",max,maxx);
+  }
+}
+int main()
+{
+    int a[]={1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1};
+    int m=2;
+    int n=sizeof(a)/sizeof(a[0]);
+    zeros(a,n,m);
+
+    return 0;
+}
