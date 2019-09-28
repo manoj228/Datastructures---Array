@@ -1,0 +1,46 @@
+//Time complexity : O(nlogn)
+#include <stdio.h>
+
+void maxProduct(int a[],int n)
+{
+   int small[n],great[n];
+   int smallmax=a[0],greatmax=a[n-1];
+   int res;
+   small[0]=1;
+   great[n-1]=1;
+   
+   for(int i=n-2;i>=0;i--)
+   {
+       great[i]=greatmax;
+       if(a[i]>greatmax)
+       greatmax=a[i];
+   }
+   
+   
+   for(int i=1;i<n;i++)
+   {
+       small[i]=smallmax;
+       if(a[i]>smallmax && a[i]<great[i])
+       smallmax=a[i];
+   }
+   
+   for(int i=0;i<n;i++)
+   printf("%d ",great[i]);
+   res=-1;
+   
+   for(int i=0;i<n;i++)
+   {
+       if((a[i]*small[i]*great[i]>res)  && (a[i]<great[i]) && (a[i]>small[i]))
+       res=i;
+   }
+   printf("%d %d %d",small[res],a[res],great[res]);
+}
+
+int main()
+{
+    int a[]={6, 7, 8, 1, 2, 3, 9, 10} ;
+    int n=sizeof(a)/sizeof(a[0]);
+    
+    maxProduct(a,n);
+    return 0;
+}
