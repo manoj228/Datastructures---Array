@@ -1,0 +1,47 @@
+//Time complexity : O(n*n)
+#include <stdio.h>
+#include <stdlib.h>
+void delete(int a[],int n,int k)
+{
+    int *p=(int*)malloc(sizeof(int)*n);
+    int b[n],t=0;
+    int s=0,c=0;
+    for(int i=0;i<n;i++)
+    {
+        c++;
+        if(a[i]<a[i+1] && c<=k)
+        {
+           
+        }
+        else 
+        {
+        b[t++]=a[i];
+        }
+    }
+    
+    c=1;
+    for(int i=0;i<t;i++)
+    {
+        c++;
+        if(b[i]<b[i+1] && c<=k)
+        {
+           
+        }
+        else 
+        {
+        p[s++]=b[i];
+        }
+    }
+    for(int i=0;i<s;i++)
+   printf("%d ",p[i]);
+}
+
+int main()
+{
+  int a[]={23, 45, 11, 77, 18};
+  int n=sizeof(a)/sizeof(a[0]);
+  int k=3;
+  delete(a,n,k);
+
+    return 0;
+}
