@@ -1,0 +1,39 @@
+//Time complexity : O(n)
+#include <stdio.h>
+#include <limits.h>
+void closePair(int a[],int m,int b[],int n,int x)
+{
+    int diff = INT_MAX;
+    int res_l,res_r;
+    int l=0,r=n-1;
+    
+    while(l<r)
+    {
+        if(abs(a[l]+b[r]-x)<diff)
+        {
+            diff = abs(a[l]+b[r]-x);
+            res_l=l;
+            res_r=r;
+        }
+        
+        else if((a[l]+b[r])>x)
+        r--;
+        else
+        l++;
+        
+    }
+    printf("%d %d",a[res_l],b[res_r]);
+    
+}
+int main()
+{
+    int a[]={1, 4, 5, 7};
+    int b[]={10, 20, 30, 40};
+    int x=32;
+    int m=sizeof(a)/sizeof(a[0]);
+    int n=sizeof(b)/sizeof(b[0]);
+    
+    closePair(a,m,b,n,x);
+
+    return 0;
+}
