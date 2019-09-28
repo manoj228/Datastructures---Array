@@ -1,0 +1,41 @@
+//Time complexity : O(nlogn)
+#include <stdio.h>
+#include <math.h>
+
+int cmp(const void *a,const void *b)
+{
+    return (*(int*)a-*(int*)b);
+    
+}
+
+void maxdifference(int a[],int n,int k)
+{
+    int as=0,s=0,s2=0,diff1,diff2,maxdiff;
+    qsort(a,n,sizeof(int),cmp);
+    
+    for(int i=0;i<n;i++)
+    as+=a[i];
+   
+    
+    for(int i=0;i<k;i++)
+    s+=a[i];
+    diff1 = abs(as - (2*s));
+    
+    for(int i=n-1;i>n-k;i--)
+    s2+=a[i];
+    
+    diff2 = abs(as- (2*s2));
+    
+    maxdiff = (diff1 > diff2) ? diff1:diff2;
+    printf("%d",maxdiff);
+}
+int main()
+{
+   int a[]={1, 7, 4, 8, -1, 5, 2, 1};
+   int k=3;
+   int n=sizeof(a)/sizeof(a[0]);
+   
+   maxdifference(a,n,k);
+
+    return 0;
+}
