@@ -1,0 +1,31 @@
+//Time complexity  : O(n)
+#include <stdio.h>
+#include <limits.h>
+//kadane's algorithm
+void largesumContiguousArray(int a[],int n)
+{
+    int maxend=0,maxsofar=INT_MIN;
+    
+    for(int i=0;i<n;i++)
+    {
+        maxend=maxend+a[i];
+        
+        if(maxend<0)
+        maxend=0;
+        
+        else if(maxsofar<maxend)
+        maxsofar=maxend;
+          
+       
+    }
+ printf("%d",maxsofar);
+}
+int main()
+{
+    int a[]={-2, -3, 4, -1, -2, 1, 5, -3};
+    int n=sizeof(a)/sizeof(a[0]);
+    
+    largesumContiguousArray(a,n);
+
+    return 0;
+}
