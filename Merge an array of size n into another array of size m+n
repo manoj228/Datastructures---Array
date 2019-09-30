@@ -1,0 +1,55 @@
+// Time complexity : O(m+n)
+#include <stdio.h>
+#define NA -1
+
+void movetoend(int mplusN[],int m)
+{
+    int j=m-1;
+    for(int i=m-1;i>=0;i--)
+    {
+        if(mplusN[i] != NA )
+        {    
+            mplusN[j]=mplusN[i];
+            j--;
+        }
+    }
+    
+   
+   // printf("%d ",j);
+}
+
+void merge(int mplusN[],int a[],int m,int n)
+{
+    int i=n,j=0,k=0;
+    
+    while(j<n)
+    {
+        if(mplusN[i]<a[j])
+        {
+            mplusN[k++]=mplusN[i];
+            mplusN[k++]=a[j];
+        }
+        else
+        {
+             mplusN[k++]=a[j];
+             mplusN[k++]=mplusN[i];
+        }
+        j++;
+        i++;
+    }
+     for(int i=0;i<m;i++)
+    printf("%d ",mplusN[i]);
+}
+
+int main()
+{
+   int mplusN[]={2, 8, NA, NA, NA, 13, NA, 15, 20};
+   int N[] = {5, 7, 9, 25};
+ int n=sizeof(N)/sizeof(N[0]);
+ int m=sizeof(mplusN)/sizeof(mplusN[0]);
+ 
+ movetoend(mplusN,m);
+ merge(mplusN,N,m,n);
+ 
+    return 0;
+}
