@@ -1,0 +1,39 @@
+//Time complexity  :O(n^2)
+//Two pointer  technique
+#include <stdio.h>
+
+int cmp(const void *a,const void *b)
+{
+    return (*(int*)a-*(int*)b);
+    
+}
+
+void count(int a[],int n)
+{
+    int c=0,l,r;
+    qsort(a,n,sizeof(int),cmp);
+    for(int i=n-1;i>=0;i--)
+    {
+        l=0,r=i-1;
+        while(l<r)
+        {
+            if(a[l]+a[r]>a[i])
+            {
+                c+=(r-l);
+                r--;
+            }
+            else
+            l++;
+            
+        }
+    }
+    printf("%d",c);
+}
+int main()
+{
+int a[]={4,3,5,7,6};
+int n=sizeof(a)/sizeof(a[0]);
+
+count(a,n);
+    return 0;
+}
