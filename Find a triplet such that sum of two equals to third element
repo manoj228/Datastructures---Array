@@ -1,0 +1,41 @@
+//Time complexity : O(n)
+#include <stdio.h>
+
+int cmp(const void *a,const void *b)
+{
+    return (*(int*)a-*(int*)b);
+}
+
+void triplets(int a[],int n)
+{
+    for(int i=n-1;i>=0;i--)
+    {
+        int j=0;
+        int k=i-1;
+        while(j<k)
+        {
+            if(a[i]==a[j]+a[k])
+            {
+                printf("%d %d %d",a[i],a[j],a[k]);
+                return;
+            }
+            else if(a[i]>a[j]+a[k])
+            j++;
+            
+            else
+            k--;
+        }
+    }
+}
+int main()
+{
+    int a[]={5, 32, 1, 7, 10, 50, 19, 21, 2};
+    int n=sizeof(a)/sizeof(a[0]);
+    
+    qsort(a,n,sizeof(int),cmp);
+    for(int i=0;i<n;i++)
+    printf("%d ",a[i]);
+    printf("\n");
+    triplets(a,n);
+    return 0;
+}
