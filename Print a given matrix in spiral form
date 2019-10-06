@@ -1,0 +1,56 @@
+
+#include <stdio.h>
+
+void printSpiral(int a[][6],int m,int n)
+{
+    int r=0,c=0;
+    /* r - starting index
+       m - ending index
+       c - starting column
+       n - ending column
+    */
+    
+    while(r<m && c<n)
+    {
+        //print first row 
+    for(int i=c;i<n;i++)
+    printf("%d ",a[r][i]);
+    r++;
+    
+    //print last column
+    for(int i=r;i<m;i++)
+    {
+        printf("%d ",a[i][n-1]);
+    }
+    n--;
+    
+    //print last row
+    if(r<m)
+    {
+        for(int i=n-1;i>=c;i--)
+        {
+            printf("%d ",a[m-1][i]);
+        }
+    
+    m--;
+    }
+    
+    //print first column
+    if(c<n)
+    {
+        for(int i=m-1;i>=r;i--)
+        printf("%d ",a[i][c]);
+    }
+    c++;
+    
+    }
+}
+int main()
+{
+    int a[3][6]= { { 1, 2, 3, 4, 5, 6 }, 
+                    { 7, 8, 9, 10, 11, 12 }, 
+                    { 13, 14, 15, 16, 17, 18 } };
+                    
+   printSpiral(a,3,6);
+    return 0;
+}
