@@ -1,0 +1,88 @@
+// this program logic is correct but it doesn't execute properly because of char array
+#include <stdio.h>
+
+void shortestdistance(char a[][4])
+{
+  int si,sj,n=4,c=0;
+  for(int i=0;i<n;i++)
+  {
+      for(int j=0;j<n;j++)
+      {
+          if(a[i][j]=='s'){
+          si=i;
+          sj=j;
+          break;
+          }
+      }
+  }
+  
+ // printf("%d %d ",si,sj);
+  while(a[si][sj]!='d')
+  {
+    if(si<n && sj<n && a[si][sj-1]=='d'|| a[si+1][sj]=='d' ||  a[si][sj+1]=='d' || a[si-1][sj]=='d' )
+      {
+         printf("%d %d %c",si,sj,a[0][5]);
+          c++;
+          break;
+      }
+      
+      // bottom
+      if(a[si+1][sj]=='*' && si<n && sj<n)
+      { 
+          c++;
+          si++;
+      }
+      
+      //top
+      else if(a[si-1][sj]=='*' && si<n && sj<n)
+      {
+         
+          c++;
+          si--;
+      }
+     
+      //right
+      else if(a[si][sj+1]=='*' && si<n && sj<n)
+      {
+           
+          c++;
+          sj++;
+      }
+      
+      //left
+      else if(a[si][sj-1]=='*' && si<n && sj<n)
+      {
+          c++; sj--;
+      }
+      
+      
+   //   if(a[si][sj-1]=='0' && a[si+1][sj]=='0' && a[si][sj+1]=='0' && a[si-1][sj]=='0')
+    //  break;
+      
+      printf("%d %d count%d\n",si,sj,c);
+  }
+  
+  
+}
+
+int main()
+{
+    char a[][4]={
+        {'0', '*', '0', 's'},
+        {'*', '0', '*', '*'},
+        {'0', '*', '*', '*'},
+        {'d', '*', '*', '*'}
+    };
+
+/*for(int i=0;i<4;i++)
+{
+    for(int j=0;j<4;j++)
+    {
+        printf("%c ",a[i][j]);
+        
+    }printf("\n");
+}*/
+
+shortestdistance(a);
+    return 0;
+}
