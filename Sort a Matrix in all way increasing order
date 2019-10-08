@@ -1,0 +1,47 @@
+
+#include <stdio.h>
+
+int cmp(const void *a,const void *b)
+{
+    return (*(int*)a - *(int*)b);
+}
+
+void sortIncreasingOrder(int a[][3],int r,int c)
+{
+    int temp[r*c],t=0,s=0;
+     for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            temp[t++]=a[i][j];
+        }
+    }
+    
+    qsort(temp,t,sizeof(int),cmp);
+    
+     for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+          a[i][j]=temp[s++];
+        }
+    }
+    
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            printf("%d ",a[i][j]);
+        }printf("\n");
+    }
+}
+
+int main()
+{
+   int a[][3]={1, 0, 3, 
+               2, 5, 6, 
+               9, 4, 8};
+    int r=3,c=3;
+    sortIncreasingOrder(a,r,c);
+    return 0;
+}
