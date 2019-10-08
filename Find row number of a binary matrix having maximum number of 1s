@@ -1,0 +1,39 @@
+
+#include <stdio.h>
+
+void maxOnes(int a[][3],int n)
+{
+    int row[n],max,maxi;
+    
+    memset(row,0,sizeof(n));
+    
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(a[i][j]==1)
+            row[i]++;
+        }
+    }
+    
+    max=row[0];
+    for(int i=0;i<n;i++)
+    {
+        if(max<row[i])
+        {
+            max=row[i];
+            maxi=i;
+        }
+    }
+    printf("Maxcount : %d Row no :%d",max,maxi+1);
+}
+
+int main()
+{
+   int a[][3]={0, 0, 1,
+               0, 1, 1,
+               0, 0, 0};
+ int n=3;
+   maxOnes(a,n);
+    return 0;
+}
