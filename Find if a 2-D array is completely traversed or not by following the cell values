@@ -1,0 +1,55 @@
+
+#include <stdio.h>
+
+struct pair
+{
+    int x;
+    int y;
+};
+
+int main()
+{
+    struct pair p[3][2];
+   struct pair pos;
+   int f=0;
+   /*
+   {      0, 1   2, 0 
+          null  1, 0
+          2, 1   1, 1 }
+    */
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<2;j++)
+        {
+            scanf("%d %d",&p[i][j].x,&p[i][j].y);
+        }
+    }
+   pos=p[0][0];
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<2;j++)
+        {
+            if(pos.x==i && pos.y==j)
+            {
+                pos.x=p[i][j].x;
+                pos.y=p[i][j].y;
+            }
+            
+            if(pos.x==1 && pos.y==1)
+            {
+                f=1;
+            break;
+            }
+            
+        }
+    }
+    if(f==1)
+    printf("YES");
+    else
+    printf("NO");
+    
+    
+   
+    
+    return 0;
+}
