@@ -1,0 +1,42 @@
+
+#include <stdio.h>
+
+void maxBitDiff(int a[][4],int r,int c)
+{
+    int s=0,max,rowsum[r],maxi,start;
+    for(int i=0;i<r;i++)
+    {s=0;
+        for(int j=0;j<c;j++)
+        {
+            s+= a[i][j];
+        }rowsum[i]=s;
+    }
+    for(int i=0;i<r;i++)
+    printf("%d ",rowsum[i]);
+    printf("\n");
+    max=rowsum[0];
+    start=1;
+    for(int i=1;i<r;i++)
+   {
+       if(max<(max-rowsum[i]) || rowsum[i]==0)
+       {
+       max=max-rowsum[i];
+       maxi = i;
+      
+       }
+   }
+    printf("%d %d",start,maxi);
+}
+
+int main()
+{
+    int a[][4]={{1 ,1 ,1 ,1 },
+                  {1 ,0, 1 ,1 },
+                  {0 ,1 ,0 ,0 },
+                  {0, 0 ,0 ,0 }};
+    int r=4,c=4;
+    
+    maxBitDiff(a,r,c);
+
+    return 0;
+}
