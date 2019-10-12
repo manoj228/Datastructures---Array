@@ -1,0 +1,56 @@
+
+#include <stdio.h>
+#include<string.h>
+
+void orientation(char a[][5],int r,int c,char pt[],int l)
+{
+    int s,e,t=0,k=0;
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            if(a[j][i]==pt[0])
+            {
+             s=j;
+             e=i;
+             break;
+            }
+           
+        }
+    }
+  //  printf("%c %c",a[s][e],pt[t]);
+    while(a[s][e++]==pt[t++])
+    {
+        if(t==l-1)
+        {
+            printf("Horizontal");
+        }
+        
+    }
+    while(a[s++][e]==pt[t++])
+    {
+        printf("h");
+        if(t==l-1)
+        {
+            printf("Vertical");
+        }
+        
+    }
+    
+}
+int main()
+{
+   char ch[][5] = { 
+              {'a', 'b', 'c', 'd', 'e'},
+              {'f', 'g', 'h', 'i', 'j'},
+              {'k', 'l', 'm', 'n', 'o'},
+              {'p', 'q', 'r', 's', 't'},
+              {'u', 'v', 'w', 'x', 'y'}};
+    int r=5,c=5;
+    char pattern[] = "pqrs";
+    int l = strlen(pattern);
+    
+    orientation(ch,r,c,pattern,l);
+    
+    return 0;
+}
