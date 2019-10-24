@@ -1,0 +1,44 @@
+// time complexity  :O(n+ r*c)
+#include <stdio.h>
+#include <string.h>
+struct Cell
+{
+    int r;
+    int c;
+};
+
+void process(int a[][3],int n,struct Cell c[])
+{
+    int s=0,row[n],col[n];
+    memset(row,0,n*sizeof(int));
+    memset(col,0,n*sizeof(int));
+   for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            s+=a[i][j];
+            row[i]+=a[i][j];
+           col[i]+=a[j][i];
+        }
+    }
+ 
+ /* compute sum , rowsum , colsum of matrix
+    then do s-row[r]-col[c]+a[r][c] to find the solution
+ */
+   printf("\n");
+   for(int i=0;i<n;i++)
+    {
+       int ro =c[i].r ;
+       int cl = c[i].c;
+       printf("%d\n",s-row[ro]-col[cl]+a[ro][cl]);
+      
+    }
+}
+int main()
+{
+    int a[][3] = {{1, 1, 2}, {3, 4, 6}, {5, 3, 2}}; 
+    struct Cell c[]= {{0, 0}, {1, 1}, {0, 1}};
+    int n=3;
+    process(a,n,c);
+    return 0;
+}
